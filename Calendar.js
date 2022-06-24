@@ -29,31 +29,33 @@ follow(
     }
 );
 
+var currentTimezone = 'Asia/Ho_Chi_Minh';
+
 intent(
     "(what is|) is (my|) timezone",
     p => {
-        p.play("Your current timezone is " + p.timeZone);
+        p.play("Your current timezone is " + currentTimezone  );
     }
 );
 
 intent(
     "(what is|) (the|) (current|) time (now|)",
     p => {
-        p.play("Now is " + api.moment().tz(p.timeZone).format("h:mmA"));
+        p.play("Now is " + api.moment().tz(currentTimezone).format("h:mmA"));
     }
 );
 
 intent(
     "(what is|) (the|) (current|) (day|date) (now|today|)",
     p => {
-        p.play("Now is " + api.moment().tz(p.timeZone).format("dddd, MMMM Do YYYY"));
+        p.play("Now is " + api.moment().tz(currentTimezone).format("dddd, MMMM Do YYYY"));
     }
 );
 
 intent(
     "(what is|) (the|) (current|) day and time (now|today|)",
     p => {
-        p.play("Now is " + api.moment().tz(p.timeZone).format("dddd, h:mmA"));
+        p.play("Now is " + api.moment().tz(currentTimezone).format("dddd, h:mmA"));
     }
 );
 

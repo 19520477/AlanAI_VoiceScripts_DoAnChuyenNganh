@@ -151,10 +151,12 @@ const getLocationCtx = context(() => {
     fallback('(Please,|) (provide a|in what|point the) location');
 });
 
+var currentTimezone = 'Asia/Ho_Chi_Minh';
+
 async function playWeather(p) {
-    const now = api.moment().tz(p.timeZone);
-    const date = p.state.date? api.moment(p.state.date.date, p.timeZone) : now;
-    const isToday = isDateToday(date, p.timeZone);
+    const now = api.moment().tz(currentTimezone);
+    const date = p.state.date? api.moment(p.state.date.date, currentTimezone) : now;
+    const isToday = isDateToday(date, currentTimezone);
     const units = p.state.units || 'imperial';
 
     if (!p.state.location) {
